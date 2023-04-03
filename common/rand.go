@@ -6,13 +6,6 @@ import (
 )
 
 //0a
-func CRandomBytes(n int) []byte {
-    bytes := make([]byte, n)
-    crand.Read(bytes)
-    return bytes
-}
-
-//0a
 func RandomBytes(n int) []byte {
     bytes := make([]byte, n)
     var randNum uint32
@@ -29,5 +22,12 @@ func RandomBytes(n int) []byte {
             }
         }
     }
+    return bytes
+}
+
+//0a, cryptographic random bytes
+func CRandomBytes(n int) []byte {
+    bytes := make([]byte, n)
+    crand.Read(bytes)
     return bytes
 }
