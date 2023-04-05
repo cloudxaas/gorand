@@ -1,6 +1,8 @@
 package cxrand
 
 import (
+    "unsafe"
+    "time"
     crand "github.com/lukechampine/frand"
     fastrand "github.com/bytedance/gopkg/lang/fastrand"
 )
@@ -30,4 +32,19 @@ func CRandomBytes(n int) []byte {
     bytes := make([]byte, n)
     crand.Read(bytes)
     return bytes
+}
+
+//0a, random string
+func RandomString(length int) string {
+    b := make([]byte, length)
+    var t int64
+    for i := 0; i < length; i++ {
+        t = time.Now().UnixNano()
+        randByte := byte(t & 0xff)
+        if randByte < 32 || randByte > 126 {
+            randByte = 32
+        }
+        b[i] = randByte
+    }
+    return *(*string)(unsafe.Pointer(&b))
 }
