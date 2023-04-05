@@ -3,7 +3,7 @@ package cxrand
 import (
     "unsafe"
     "time"
-    crand "github.com/lukechampine/frand"
+    crand "lukechampine.com/frand"
     fastrand "github.com/bytedance/gopkg/lang/fastrand"
 )
 
